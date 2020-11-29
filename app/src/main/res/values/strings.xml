@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Kvíz pro jazyk C</string>
+    <string name="zacitHru">Začít hrát</string>
+    <string name="uroven">LEHKÁ</string>
+    <string name="obrazekText">Programátorský kvíz</string>
+    <string name="zebricek">Žebříček</string>
+</resources>

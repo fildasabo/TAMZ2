@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pozadiStranky"
+    tools:context="com.example.tamz2aplikace.GrafickeAktivity.MainActivity">
+
+    <ImageView
+        android:id="@+id/obr"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="280dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logo"
+        android:contentDescription="@string/obrazekText"
+        android:foregroundGravity="center" />
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_below="@+id/obr"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:elevation="4dp"
+        android:background="@color/bila"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/btnSkupiny"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnHrej"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_margin="8dp"
+                android:background="#607D8B"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/zacitHru"
+                android:textColor="#FFFFFF"
+                android:theme="@style/MojeTlacitko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnSkore"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_margin="8dp"
+                android:background="#607D8B"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/zebricek"
+                android:textColor="#FFFFFF"
+                android:theme="@style/MojeTlacitko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/rel1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/bila"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:elevation="4dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressTint="#607D8B"
+                android:thumbTint="#607D8B"
+                android:max="3" />
+
+            <TextView
+                android:id="@+id/txtUroven"
+                android:layout_gravity="center"
+                android:text="@string/uroven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
