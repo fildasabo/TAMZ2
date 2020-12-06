@@ -74,6 +74,7 @@ public class Hra extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_hra);
+        getSupportActionBar().hide();
 
         //data z hlavní aktivity
         Bundle extra = getIntent().getExtras();

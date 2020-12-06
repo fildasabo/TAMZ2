@@ -1,7 +1,9 @@
 package com.example.tamz2aplikace.GrafickeAktivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     TextView txtUroven;
     Button btnSkore, btnHrej;
     DbObsluha dbObsluha;
+
+    MediaPlayer mediaPlayer;
 
     // slouží pro Android tlačítko zpět
     private boolean _doubleBackToExitPressedOnce = false;
@@ -54,12 +58,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        mediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mediaPlayer.stop();
+        mediaPlayer.release();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.music);
 
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         txtUroven = (TextView) findViewById(R.id.txtUroven);

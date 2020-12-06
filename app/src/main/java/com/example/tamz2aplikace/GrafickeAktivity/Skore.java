@@ -36,6 +36,7 @@ public class Skore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_skore);
+        getSupportActionBar().hide();
 
         lstView = (ListView)findViewById(R.id.lstSkore);
         DbObsluha db = new DbObsluha(this);

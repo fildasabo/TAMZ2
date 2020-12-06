@@ -38,6 +38,7 @@ public class Vysledek extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_vysledek);
+        getSupportActionBar().hide();
 
         DbObsluha db = new DbObsluha(this);
 
