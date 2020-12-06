@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pozadiStranky"
+    tools:context="com.example.tamz2aplikace.GrafickeAktivity.Vysledek">
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:padding="20dp"
+        android:elevation="4dp"
+        android:background="@color/bila"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/btnSkupiny"
+            android:paddingTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtVysledneSkore"
+                android:layout_gravity="center"
+                android:text="@string/konecneSkore"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtVsechOtazky"
+                android:layout_gravity="center"
+                android:text="@string/konecnyPocOtazek"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:id="@+id/vysledekProgressBar"
+                android:layout_marginRight="8dp"
+                android:progressTint="#607D8B"
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnHrajZnovu"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_margin="8dp"
+                android:background="#607D8B"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/novaHra"
+                android:textColor="#FFFFFF"
+                android:theme="@style/MojeTlacitko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnZpetDoHlNabidky"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_margin="8dp"
+                android:background="#607D8B"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/zpetMenu"
+                android:textColor="#FFFFFF"
+                android:theme="@style/MojeTlacitko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

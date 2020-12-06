@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
@@ -104,10 +107,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Tlačítko hry - předání aktivity
-        // kod
+        btnHrej.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Hra.class);
+                //Pošle do Aktivity Hra herní úroven
+                intent.putExtra("UROVEN", getHerniUroven());
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //Tlačítko skore - předání aktivity
-        // kod
+        btnSkore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Skore.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private String getHerniUroven() {

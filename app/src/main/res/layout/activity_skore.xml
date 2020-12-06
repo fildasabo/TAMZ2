@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pozadiStranky"
+    tools:context="com.example.tamz2aplikace.GrafickeAktivity.Skore">
+
+    <RelativeLayout
+        android:id="@+id/panelZebricek"
+        android:padding="20dp"
+        android:elevation="4dp"
+        android:background="@color/bila"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+        <TextView
+            android:id="@+id/txtTitulek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/nejSkore"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
+
+        <ListView
+            android:id="@+id/lstSkore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTitulek"
+            android:layout_marginTop="10dp"></ListView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

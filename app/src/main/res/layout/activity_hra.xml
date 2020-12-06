@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/pozadiStranky"
+tools:context="com.example.tamz2aplikace.GrafickeAktivity.Hra">
+
+<RelativeLayout
+    android:id="@+id/panelSkore"
+    android:padding="10dp"
+    android:elevation="4dp"
+    android:background="@color/bila"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+    <LinearLayout
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtSkore"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/button_ramecek"
+            android:layout_marginStart="25dp"
+            android:text="@string/skoreVeHre"
+            android:textSize="30sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtOtazka"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/pocetOtazek"
+            android:textSize="30sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_below="@+id/panelSkore"
+    android:id="@+id/otaz"
+
+    android:layout_marginTop="10dp"
+    android:padding="10dp"
+    android:elevation="4dp"
+    android:background="@color/bila"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtZadani"
+            android:layout_gravity="center"
+            android:text="@string/zadaniOtazky"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+<RelativeLayout
+    android:id="@+id/odpovedi"
+    android:layout_below="@+id/otaz"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop="10dp"
+
+    android:background="@color/bila"
+    android:elevation="4dp"
+    android:paddingTop="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" tools:targetApi="lollipop">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/btnSkupiny"
+        android:paddingTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+        <ProgressBar
+            android:id="@+id/progessBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:max="14"
+            android:progress="0"
+            android:progressTint="#607D8B" />
+
+        <Button
+            android:id="@+id/btnOdpovedA"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#607D8B"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/odpoved_a"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/btnOdpovedB"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#607D8B"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/odpoved_b"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/btnOdpovedC"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#607D8B"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/odpoved_c"
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/btnOdpovedD"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#607D8B"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="@string/odpoved_d"
+            android:textColor="#FFFFFF"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+</RelativeLayout>
