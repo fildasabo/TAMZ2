@@ -21,13 +21,12 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Hra extends AppCompatActivity implements View.OnClickListener{
+public class Hra extends BaseActivity implements View.OnClickListener{
 
     final static long INTERVAL = 1000; // 1 sekunda
     final static long KONEC = 15000; // 15 sekund
 
     // slouží pro Android tlačítko zpět
-    private static final String TAG = "Zpet";
     private boolean _doubleBackToExitPressedOnce = false;
 
     int casProCasovac = 1;

@@ -21,6 +21,7 @@
         <activity android:name="com.example.tamz2aplikace.GrafickeAktivity.Vysledek" />
         <activity android:name="com.example.tamz2aplikace.GrafickeAktivity.Hra" />
         <activity android:name="com.example.tamz2aplikace.GrafickeAktivity.Skore"/>
+        <activity android:name="com.example.tamz2aplikace.GrafickeAktivity.Nastaveni"/>
     </application>
 
 </manifest>

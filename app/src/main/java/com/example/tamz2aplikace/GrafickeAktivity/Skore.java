@@ -15,12 +15,9 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Skore extends AppCompatActivity {
+public class Skore extends BaseActivity {
 
     ListView lstView;
-
-    // slouží pro Android tlačítko zpět
-    private static final String TAG = "Zpet";
 
     @Override
     public void onBackPressed() {

@@ -4,61 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pozadiStranky"
     tools:context="com.example.tamz2aplikace.GrafickeAktivity.MainActivity">
 
     <ImageView
         android:id="@+id/obr"
-        android:layout_marginTop="10dp"
-        android:layout_width="300dp"
-        android:layout_height="280dp"
+        android:layout_width="248dp"
+        android:layout_height="232dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/logo"
         android:contentDescription="@string/obrazekText"
         android:foregroundGravity="center" />
 
     <RelativeLayout
         android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/obr"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:padding="10dp"
-        android:elevation="4dp"
+        android:layout_marginTop="-4dp"
         android:background="@color/bila"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" tools:targetApi="lollipop">
+        android:elevation="4dp"
+        android:padding="10dp"
+        tools:targetApi="lollipop">
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/btnSkupiny"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnHrej"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
                 android:background="#607D8B"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/zacitHru"
                 android:textColor="#FFFFFF"
-                android:theme="@style/MojeTlacitko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:theme="@style/MojeTlacitko" />
 
             <Button
                 android:id="@+id/btnSkore"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
                 android:background="#607D8B"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/zebricek"
                 android:textColor="#FFFFFF"
-                android:theme="@style/MojeTlacitko"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:theme="@style/MojeTlacitko" />
 
+            <Button
+                android:id="@+id/btnNastaveni"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="#607D8B"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/nastaveni"
+                android:textColor="#FFFFFF"
+                android:theme="@style/MojeTlacitko" />
 
         </LinearLayout>
 

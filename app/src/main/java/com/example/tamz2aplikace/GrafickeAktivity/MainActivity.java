@@ -1,7 +1,7 @@
 package com.example.tamz2aplikace.GrafickeAktivity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,20 +19,19 @@ import com.example.tamz2aplikace.R;
 
 import java.io.IOException;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     SeekBar seekBar;
     TextView txtUroven;
-    Button btnSkore, btnHrej;
+    Button btnSkore, btnHrej, btnNastaveni;
     DbObsluha dbObsluha;
 
     MediaPlayer mediaPlayer;
 
+    SharedPreferences sharedPref;
+
     // slouží pro Android tlačítko zpět
     private boolean _doubleBackToExitPressedOnce = false;
-    private static final String TAG = "Zpet";
 
     //tlačítko zpět, při prvním stisknutí se zeptá, jestli chcete opravdu odejít z aplikace
     @Override
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "vratitSeZpet--");
         if (_doubleBackToExitPressedOnce) {
             Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
             finish();
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         mediaPlayer.stop();
         mediaPlayer.release();
@@ -85,11 +84,17 @@ public class MainActivity extends AppCompatActivity {
         txtUroven = (TextView) findViewById(R.id.txtUroven);
         btnSkore = (Button) findViewById(R.id.btnSkore);
         btnHrej = (Button) findViewById(R.id.btnHrej);
+        btnNastaveni = (Button) findViewById(R.id.btnNastaveni);
+
+        //sharedPref = getPreferences(Context.MODE_PRIVATE);
+        //sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        //boolean nocniPozadi = sharedPref.getBoolean(getString(R.string.pozadi), false);
 
         dbObsluha = new DbObsluha(this);
-        try{
+        try {
             dbObsluha.vytvoreniDatabaze();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -97,8 +102,7 @@ public class MainActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                switch (progress)
-                {
+                switch (progress) {
                     case 0:
                         txtUroven.setText(Urovne.UROVEN.LEHKÁ.toString());
                         break;
@@ -111,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     case 3:
                         txtUroven.setText(Urovne.UROVEN.LEGENDÁRNÍ.toString());
                         break;
-                    default: txtUroven.setText(Urovne.UROVEN.LEHKÁ.toString());
+                    default:
+                        txtUroven.setText(Urovne.UROVEN.LEHKÁ.toString());
                 }
             }
 
@@ -148,11 +153,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Tlačítko nastaveni - předání aktivity
+        btnNastaveni.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Nastaveni.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private String getHerniUroven() {
-        switch (seekBar.getProgress())
-        {
+        switch (seekBar.getProgress()) {
             case 0:
                 return Urovne.UROVEN.LEHKÁ.toString();
             case 1:
@@ -161,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
                 return Urovne.UROVEN.TĚŽKÁ.toString();
             case 3:
                 return Urovne.UROVEN.LEGENDÁRNÍ.toString();
-            default: return Urovne.UROVEN.LEHKÁ.toString();
+            default:
+                return Urovne.UROVEN.LEHKÁ.toString();
         }
     }
 }

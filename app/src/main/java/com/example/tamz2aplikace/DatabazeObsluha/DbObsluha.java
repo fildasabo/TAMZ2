@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.tamz2aplikace.Model.Otazky;
 import com.example.tamz2aplikace.Model.Urovne;
 import com.example.tamz2aplikace.Model.Zebricek;
+import com.example.tamz2aplikace.Model.ZebricekXml;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +30,7 @@ import java.util.List;
 public class DbObsluha extends SQLiteOpenHelper {
 
     private static String DB_JMENO = "Databaze.db";
-    private static String DB_CESTA ="";
+    private static String DB_CESTA = "";
     private static final int DB_VERZE = 100;
     private SQLiteDatabase databaze;
     private Context mContext = null;
@@ -39,7 +40,7 @@ public class DbObsluha extends SQLiteOpenHelper {
         DB_CESTA = context.getApplicationInfo().dataDir + "/databases/";
 
         File file = new File(DB_CESTA + "Databaze.db");
-        if(file.exists())
+        if (file.exists())
             otevreniDatabaze();
 
         this.mContext = context;
@@ -60,28 +61,27 @@ public class DbObsluha extends SQLiteOpenHelper {
 
             byte[] buffer = new byte[1024];
             int velikost;
-            while((velikost = mujVstup.read(buffer)) > 0)
+            while ((velikost = mujVstup.read(buffer)) > 0)
                 mujVystup.write(buffer, 0, velikost);
 
             mujVystup.flush();
             mujVystup.close();
             mujVstup.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private boolean overeniDataze()  {
+    private boolean overeniDataze() {
         SQLiteDatabase tempDB = null;
         try {
             String mojeCesta = DB_CESTA + DB_JMENO;
             tempDB = SQLiteDatabase.openDatabase(mojeCesta, null, SQLiteDatabase.OPEN_READWRITE);
 
-        }catch (SQLiteException e) {
+        } catch (SQLiteException e) {
             e.printStackTrace();
         }
-        if(tempDB != null)
-        {
+        if (tempDB != null) {
             tempDB.close();
         }
         return tempDB != null ? true : false;
@@ -91,12 +91,12 @@ public class DbObsluha extends SQLiteOpenHelper {
         boolean existenceDatabaze = overeniDataze();
         if (existenceDatabaze) {
 
-        }else  {
+        } else {
             this.getReadableDatabase();
             try {
                 db_delete();
                 kopirovaniDatabaze();
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -104,7 +104,7 @@ public class DbObsluha extends SQLiteOpenHelper {
 
     @Override
     public synchronized void close() {
-        if(databaze != null)
+        if (databaze != null)
             databaze.close();
 
         super.close();
@@ -115,18 +115,16 @@ public class DbObsluha extends SQLiteOpenHelper {
 
     }
 
-    public void db_delete()
-    {
+    public void db_delete() {
         File file = new File(DB_CESTA);
-        if(file.exists())
-        {
+        if (file.exists()) {
             file.delete();
         }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if(newVersion > oldVersion)
+        if (newVersion > oldVersion)
             try {
 
                 kopirovaniDatabaze();
@@ -135,24 +133,24 @@ public class DbObsluha extends SQLiteOpenHelper {
             }
     }
 
-    public List<Otazky> vsechnyOtazkyUroven(String uroven){
+    public List<Otazky> vsechnyOtazkyUroven(String uroven) {
         List<Otazky> seznamOtazek = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         int konec = 0;
 
-        if(uroven.equals(Urovne.UROVEN.LEHKÁ.toString()))
+        if (uroven.equals(Urovne.UROVEN.LEHKÁ.toString()))
             konec = 5;
-        else if(uroven.equals(Urovne.UROVEN.STŘEDNÍ.toString()))
+        else if (uroven.equals(Urovne.UROVEN.STŘEDNÍ.toString()))
             konec = 10;
-        else if(uroven.equals(Urovne.UROVEN.TĚŽKÁ.toString()))
+        else if (uroven.equals(Urovne.UROVEN.TĚŽKÁ.toString()))
             konec = 15;
-        else if(uroven.equals(Urovne.UROVEN.LEGENDÁRNÍ.toString()))
+        else if (uroven.equals(Urovne.UROVEN.LEGENDÁRNÍ.toString()))
             konec = 20;
         Cursor c;
         try {
             c = db.rawQuery(String.format("SELECT DISTINCT id_z FROM Otazky ORDER BY RANDOM() LIMIT %d", konec), null);
             Cursor d;
-            while(c.moveToNext()) {
+            while (c.moveToNext()) {
                 int Id = c.getInt(c.getColumnIndex("ID_z"));
 
                 d = db.rawQuery(String.format("SELECT ot.ID_z, ot.Spravna, z.Zadani, od.ID_o, od.Odpovedi, " +
@@ -164,7 +162,7 @@ public class DbObsluha extends SQLiteOpenHelper {
                 String Otazka = "";
                 String Vysledek = "";
 
-                while(d.moveToNext()) {
+                while (d.moveToNext()) {
                     Otazka = d.getString(d.getColumnIndex("z.Zadani"));
                     prehozeni[i++] = d.getString(d.getColumnIndex("od.Odpovedi"));
                     Vysledek = d.getString(d.getColumnIndex("Spravna"));
@@ -182,7 +180,7 @@ public class DbObsluha extends SQLiteOpenHelper {
             }
             c.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -191,13 +189,27 @@ public class DbObsluha extends SQLiteOpenHelper {
     }
 
     //Vložení skore do žebříčku
-    public void vlozeniSkore(double skore){
-        String query = "INSERT INTO Zebricek(Skore) VALUES("+ skore +")";
+    public void vlozeniSkore(double skore) {
+        String query = "INSERT INTO Zebricek(Skore) VALUES(" + skore + ")";
+        databaze.execSQL(query);
+    }
+
+    //Vložení skore do žebříčku z listu
+    public void vlozeniSkore(List<ZebricekXml> zebricekXmlList) {
+        for (ZebricekXml zebricek: zebricekXmlList) {
+            String query = "INSERT INTO Zebricek(Skore) VALUES(" + zebricek.getSkore() + ")";
+            databaze.execSQL(query);
+        }
+    }
+
+    //Smazani skore z žebříčku
+    public void smazSkore() {
+        String query = "DELETE FROM Zebricek;";
         databaze.execSQL(query);
     }
 
     //skore - žebříček
-    public List<Zebricek> getZebricek(){
+    public List<Zebricek> getZebricek() {
         List<Zebricek> seznamZebricku = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c;
@@ -207,29 +219,36 @@ public class DbObsluha extends SQLiteOpenHelper {
             if (c == null) return null;
             c.moveToFirst();
             do {
-                int Id = c.getInt(c.getColumnIndex("ID"));
-                double Skore = c.getDouble(c.getColumnIndex("Skore"));
-                c.moveToNext();
-                double pom = c.getDouble(c.getColumnIndex("Skore"));
-                c.moveToPrevious();
-                int medaile;
+                int id = c.getInt(c.getColumnIndex("ID"));
+                double skore = c.getDouble(c.getColumnIndex("Skore"));
 
-                medaile = a;
+                // nastavovani medaili
 
-                Zebricek zebricek = new Zebricek(Id, Skore, medaile);
-                seznamZebricku.add(zebricek);
+                if (c.isLast()) {
+                    Zebricek zebricek = new Zebricek(id, skore, a);
+                    seznamZebricku.add(zebricek);
+                } else {
+                    c.moveToNext();
+                    double pom = c.getDouble(c.getColumnIndex("Skore"));
+                    c.moveToPrevious();
+                    int medaile;
 
-                if(Skore != pom) {
-                    a++;
+                    medaile = a;
+
+                    Zebricek zebricek = new Zebricek(id, skore, medaile);
+                    seznamZebricku.add(zebricek);
+
+                    if (skore != pom) {
+                        a++;
+                    }
+
+                    if (a > 3) {
+                        a = 4;
+                    }
                 }
-
-                if(a > 3) {
-                    a = 4;
-                }
-            }while (c.moveToNext());
+            } while (c.moveToNext());
             c.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

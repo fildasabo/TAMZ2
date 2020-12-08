@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pozadiStranky"
     tools:context="com.example.tamz2aplikace.GrafickeAktivity.Vysledek">
 
     <RelativeLayout

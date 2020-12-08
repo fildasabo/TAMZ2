@@ -4,6 +4,7 @@
     <string name="uroven">LEHKÁ</string>
     <string name="obrazekText">Programátorský kvíz</string>
     <string name="zebricek">Žebříček</string>
+    <string name="nastaveni">Nastavení</string>
     <string name="odpoved_a">Odpoved A</string>
     <string name="odpoved_b">Odpoved B</string>
     <string name="odpoved_c">Odpoved C</string>
@@ -18,4 +19,10 @@
     <string name="skoreHrace">500</string>
     <string name="medaile">Medaile</string>
     <string name="zpetMenu">Zpátky do menu</string>
+    <string name="smazZebricek">Smazat žebříček</string>
+    <string name="pridatSkore">Přidat skóre z XML</string>
+    <string name="nocniPozadi">Noční pozadí</string>
+    <string name="pozadi">pozadi</string>
+    <string name="zapnuto">Zapnuto</string>
+    <string name="vypnuto">Vypnuto</string>
 </resources>

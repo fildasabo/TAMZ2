@@ -12,17 +12,12 @@ import android.widget.TextView;
 import com.example.tamz2aplikace.DatabazeObsluha.DbObsluha;
 import com.example.tamz2aplikace.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class Vysledek extends AppCompatActivity {
+public class Vysledek extends BaseActivity {
 
     Button btnHrajZnovu, btnZpatkyDoMenu;
     TextView txtCelkoveSkore, txtVsechnyOtazky;
     ProgressBar progressBar;
     String uroven = "";
-
-    // slouží pro Android tlačítko zpět
-    private static final String TAG = "Zpet";
 
     @Override
     public void onBackPressed() {

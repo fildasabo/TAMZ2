@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#242E38</color>
     <color name="colorAccent">#FF4081</color>
     <color name="pozadiStranky">#b5cbe7</color>
+    <color name="pozadiStrankyNocni">#8D93B3</color>
     <color name="bila">#ffffff</color>
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tamz2aplikace.GrafickeAktivity.Nastaveni">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchPozadi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nocniPozadi"
+        android:checked="false"
+        android:textOn="@string/zapnuto"
+        android:textOff="@string/vypnuto"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+       />
+
+    <Button
+        android:id="@+id/btnSmazZebricek"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#607D8B"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/smazZebricek"
+        android:textColor="#FFFFFF"
+        android:theme="@style/MojeTlacitko" />
+
+    <Button
+        android:id="@+id/btnPridejSkore"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#607D8B"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/pridatSkore"
+        android:textColor="#FFFFFF"
+        android:theme="@style/MojeTlacitko" />
+
+</LinearLayout>
